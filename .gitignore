@@ -1,1 +1,15 @@
+*.pyc
+*.pyo
+.eggs
+*.egg-info
+.cache
+.coverage
+.tox
+
+db.sqlite3
+manage.py
+
+media/
 /venv
+/gyazowinpsvr/
+__pycache__
