@@ -15,11 +15,18 @@ Requirement
 
 Quick start
 -----------
-1. インストールする::
+#. Python、pip、Djangoの準備::
+
+各人でpython、pip、Djangoでアプリケーションを公開できる環境を作って下さい。
+
+続いて、django-admin startprojectを終わらせておいてください。
+
+#. インストールする::
 
     pip install -U https://github.com/wiredforest/gyazowinpsvr/archive/master.tar.gz
 
-2. settings.pyのINSTALLED_APPSに足す::
+
+#. settings.pyに修正を加えてきます。::
 
     INSTALLED_APPS = [
         ...
@@ -28,24 +35,20 @@ Quick start
         'django.contrib.sitemaps',
     ]
 
-    SITE_ID = 1  # add
-
-3. MEDIA_ROOT、MEDIA_URLを設定する::
-
-    # settings.py
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     MEDIA_URL = '/media/'
 
-4. ルートのurls.pyに足す::
+    GYAZOWINPSVR_HOST = 'domain.to.gyazowinpsvr'  # must change
+
+#. ルートのurls.pyに足す::
 
 	urlpatterns = [
 	    url(r'^admin/', admin.site.urls),
-	    url(r'^gya/', include('gyazosvr.urls')),  # add
+        path('', include(gyazo_urls)),  # add
 	]
 
-5. python manage.py migrate　でモデルを追加する.
+#. python manage.py migrate　でモデルを追加する.
 
-6. python manage.py runserver 等で動かし、gyazowin+側の設定を施した上で、アップロードする。
+#. python manage.py runserver 等で動かし、クライアント側の設定を施した上で、アップロードする。
 
-7. MEDIA_ROOTにファイルが保存されていれば動作しています。
-
+#. MEDIA_ROOT/up/配下にファイルが保存されていれば動作しています。
