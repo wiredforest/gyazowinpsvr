@@ -6,5 +6,5 @@ app_name = 'gyazosvr'
 urlpatterns = [
     re_path(r'^$', views.GyazoSvrIndexView.as_view(), name='index'),
 
-    re_path(r'^up/$', views.Upload.as_view(), name='upload'),
+    re_path(r'^up/$', views.UploadView.as_view(), name='upload'),
 ]

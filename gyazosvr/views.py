@@ -14,7 +14,7 @@ class GyazoSvrIndexView(generic.TemplateView):
     template_name = 'gyazosvr/index.html'
 
 
-class Upload(generic.TemplateView):
+class UploadView(generic.TemplateView):
 
     def get(self, request, *args, **kwargs):
         return bad_request(request, Exception("not allowed GET request"))
