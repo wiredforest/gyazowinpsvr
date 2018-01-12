@@ -1,4 +1,10 @@
-from django.test import TestCase
+import os
+from django.conf import settings
+from django.test import TestCase, override_settings
+
+TESTS_ROOT = os.path.dirname(__file__)
+TEST_MEDIA_ROOT = os.path.join(TESTS_ROOT, 'media_root')
+RESOURCE_ROOT = os.path.join(TESTS_ROOT, 'resource')
 
 
 class IndexViewTests(TestCase):
@@ -13,3 +19,17 @@ class UploadViewTests(TestCase):
         c = self.client.get('/up/')
         self.assertEqual(c.status_code, 400)
         self.assertNotEqual(c.content, '')
+
+    @override_settings(MEDIA_ROOT=TEST_MEDIA_ROOT)
+    def test_post(self):
+        with open(os.path.join(RESOURCE_ROOT, 'sample.png'), 'rb') as file:
+            data = {
+                'id': 'hogehoge',
+                'imagedata': file,
+            }
+            c = self.client.post('/up/', data=data)
+            self.assertEqual(c.status_code, 200)
+            self.assertNotEqual(c.content, '')
+
+            # アップロードされたファイルの確認
+            self.assertTrue(os.path.exists(os.path.join(TEST_MEDIA_ROOT, 'up', 'hogehoge.png')))

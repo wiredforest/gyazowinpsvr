@@ -1,18 +1,16 @@
 language: python
 
 python:
-    - "3.4"
     - "3.5"
     - "3.6"
 
 env:
-  - DJANGO=django==1.9
-  - DJANGO=django==1.10
   - DJANGO=django==1.11
+  - DJANGO=django==2.0
   - DJANGO=https://github.com/django/django/archive/master.tar.gz
 
 install:
-    - pip install Django
+    - pip install $DJANGO
 
 script:
     - python -Wall manage.py test
