@@ -1,16 +1,27 @@
 import os
 from setuptools import find_packages, setup
+from setuptools.command.test import test as TestCommand
 
 with open(os.path.join(os.path.dirname(__file__), 'README.rst'), 'rb') as readme:
     README = readme.read()
 
-# allow setup.py to be run from any path
-os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
+class DjangoTest(TestCommand):
+
+    def run_test(self):
+        import django
+        from django.conf import settings
+        from django.test.utils import get_runner
+        django.setup()
+        TestRunner = get_runner(settings)
+        test_runner = TestRunner()
+        failures = test_runner.run_tests(['tests'])
+        sys.exit(bool(failures))
+
 
 setup(
     name='gyazowinpsvr',
-    version='0.1',
-    packages=find_packages(),
+    version='0.2',
+    packages=find_packages('tests', 'gyazowinpsvr'),
     include_package_data=True,
     license='MIT License',
     description='gyazowin+ server using python',

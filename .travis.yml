@@ -10,7 +10,8 @@ env:
   - DJANGO=https://github.com/django/django/archive/master.tar.gz
 
 install:
-    - pip install $DJANGO
+    - pip install -r requirements.txt
+    - python setup.py -q install
 
 script:
     - python -Wall manage.py test
