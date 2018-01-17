@@ -1,6 +1,8 @@
 ==================
 gyazowinpsvr
 ==================
+.. image:: https://travis-ci.org/wiredforest/gyazowinpsvr.svg?branch=master
+    :target: https://travis-ci.org/wiredforest/gyazowinpsvr
 
 gyazowin+ のサーバ－、python + Django実装です。
 
