@@ -11,7 +11,6 @@ env:
 
 install:
     - pip install $DJANGO
-    - python setup.py test
 
 script:
-    - python -Wall manage.py test
+    - python setup.py test
