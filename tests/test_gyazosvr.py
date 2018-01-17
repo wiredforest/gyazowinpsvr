@@ -15,6 +15,20 @@ class IndexViewTests(TestCase):
 
 
 class UploadViewTests(TestCase):
+
+    def setUp(self):
+        super().setUp()
+        try:
+            os.makedirs(os.path.join(TEST_MEDIA_ROOT, 'up'))
+        except FileExistsError:
+            pass
+
+    def tearDown(self):
+        super().tearDown()
+        up_dir = os.path.join(TEST_MEDIA_ROOT, 'up')
+        for p in os.listdir(up_dir):
+            os.remove(os.path.join(up_dir, p))
+
     def test_get(self):
         c = self.client.get('/up/')
         self.assertEqual(c.status_code, 400)
