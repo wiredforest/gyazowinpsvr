@@ -11,7 +11,7 @@ gyazowin+ のサーバ－、python + Django実装です。
 Requirement
 --------------
 
-:Python: 3.6以上
+:Python: 3.5以上
 :Django: 2.0以上
 
 
