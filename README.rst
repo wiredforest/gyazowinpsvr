@@ -14,6 +14,7 @@ Requirement
 :Python: 3.7以上
 :Django: 3.0.2以上
 
+セキュリティの都合。
 
 Quick start
 -----------
