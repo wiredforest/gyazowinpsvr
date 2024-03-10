@@ -1,8 +1,6 @@
 ==================
 gyazowinpsvr
 ==================
-.. image:: https://travis-ci.org/wiredforest/gyazowinpsvr.svg?branch=master
-    :target: https://travis-ci.org/wiredforest/gyazowinpsvr
 
 gyazowin+ のサーバ－、python + Django実装です。
 
@@ -11,10 +9,11 @@ gyazowin+ のサーバ－、python + Django実装です。
 Requirement
 --------------
 
-:Python: 3.7以上
-:Django: 3.0.2以上
+:Python: 3.12以上
+:Django: 5.0以上
 
-セキュリティの都合。
+
+手元ではこのバージョンで動作を確認しています。
 
 Quick start
 -----------
